@@ -3,105 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autos 0 km en Argentina - Latin NCAP 2025</title>
+    <title>Autos 0 km Argentina + Latin NCAP 2025 con FOTOS</title>
     <style>
-        body {font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:20px;}
-        h1 {text-align:center; color:#333;}
-        .controls {text-align:center; margin:20px;}
-        input, select {padding:10px; font-size:16px; width:250px;}
-        table {width:100%; border-collapse:collapse; margin-top:20px; background:white; box-shadow:0 0 10px rgba(0,0,0,0.1);}
-        th, td {padding:12px; text-align:left; border-bottom:1px solid #ddd;}
-        th {background:#2c3e50; color:white;}
-        tr:hover {background:#f0f0f0;}
-        .stars {font-size:24px;}
+        body {font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:20px; line-height:1.5;}
+        h1 {text-align:center; color:#222;}
+        .controls {text-align:center; margin:30px;}
+        input, select {padding:12px; font-size:17px; width:280px; margin:5px;}
+        table {width:100%; border-collapse:collapse; background:white; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+        th {background:#2c3e50; color:white; padding:15px; font-size:18px;}
+        td {padding:12px; text-align:center; vertical-align:middle; border-bottom:1px solid #ddd;}
+        tr:hover {background:#f8f9fa;}
+        img {width:180px; height:auto; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.2);}
+        .stars {font-size:28px; min-width:140px;}
         .star-full {color:#f1c40f;}
-        .star-empty {color:#ccc;}
         .zero {color:#e74c3c;}
-        @media (max-width:800px) {table, thead, tbody, th, td, tr {display:block;} th {display:none;} td {position:relative; padding-left:50%;} td:before {content:attr(data-label); position:absolute; left:10px; font-weight:bold;}}
+        @media (max-width:900px){
+            table, thead, tbody, th, td, tr {display:block;}
+            thead tr {display:none;}
+            tr {margin-bottom:20px; border:1px solid #ccc; border-radius:10px; overflow:hidden;}
+            td {display:block; text-align:center; padding:10px;}
+            td:before {content:attr(data-label); font-weight:bold; display:block; color:#2c3e50;}
+            img {width:100%; max-width:300px;}
+        }
     </style>
 </head>
 <body>
-    <h1>Autos 0 km en Argentina con Latin NCAP (Noviembre 2025)</h1>
+    <h1>Autos 0 km en Argentina - Latin NCAP 2025 con FOTOS</h1>
     <div class="controls">
         <input type="text" id="search" placeholder="Buscar modelo o marca..." onkeyup="filter()">
         <select id="filterStars" onchange="filter()">
             <option value="">Todas las estrellas</option>
-            <option value="5">★★★★★ (5 estrellas)</option>
-            <option value="4">★★★★☆ (4 estrellas)</option>
-            <option value="3">★★★☆☆ (3 estrellas)</option>
-            <option value="2">★★☆☆☆ (2 estrellas)</option>
-            <option value="1">★☆☆☆☆ (1 estrella)</option>
-            <option value="0">☆☆☆☆☆ (0 estrellas)</option>
+            <option value="5">5 estrellas</option>
+            <option value="4">4 estrellas</option>
+            <option value="3">3 estrellas</option>
+            <option value="2">2 estrellas</option>
+            <option value="1">1 estrella</option>
+            <option value="0">0 estrellas</option>
         </select>
     </div>
 
     <table id="tabla">
         <thead>
             <tr>
+                <th>Foto</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>Versión base</th>
-                <th>Estrellas Latin NCAP</th>
+                <th>Versión</th>
+                <th>Estrellas</th>
                 <th>Año test</th>
                 <th>Notas</th>
             </tr>
         </thead>
         <tbody>
             <!-- 5 ESTRELLAS -->
-            <tr><td>Toyota</td><td>Corolla</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2022</td><td>7 airbags + ADAS</td></tr>
-            <tr><td>Toyota</td><td>Hilux</td><td>doble cabina</td><td><span class="stars">★★★★★</span></td><td>2019/2024</td><td>fabricada en Zárate</td></tr>
-            <tr><td>Toyota</td><td>Corolla Cross</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2022</td><td>híbrido disponible</td></tr>
-            <tr><td>Volkswagen</td><td>Taos</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2021</td><td>fabricado en Pacheco</td></tr>
-            <tr><td>Volkswagen</td><td>Nivus</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2021</td><td></td></tr>
-            <tr><td>Volkswagen</td><td>Virtus</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2022</td><td></td></tr>
-            <tr><td>Volkswagen</td><td>T-Cross</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2024</td><td></td></tr>
-            <tr><td>Volkswagen</td><td>Tera</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2025</td><td>nuevo SUV entrada gama</td></tr>
-            <tr><td>Chevrolet</td><td>Tracker</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2022</td><td>fabricada en Sta. Fe</td></tr>
-            <tr><td>Hyundai</td><td>Tucson</td><td>facelift 2025</td><td><span class="stars">★★★★★</span></td><td>2025</td><td>6 airbags + ADAS</td></tr>
-            <tr><td>Nissan</td><td>Kicks</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2025</td><td></td></tr>
-            <tr><td>Kia</td><td>K4</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2025</td><td>próximo lanzamiento</td></tr>
-            <tr><td>Ford</td><td>Ranger</td><td>todas</td><td><span class="stars">★★★★★</span></td><td>2024</td><td>fabricada en Pacheco</td></tr>
-            <tr><td>Mitsubishi</td><td>L200</td><td>cabina simple/doble</td><td><span class="stars">★★★★★</span></td><td>2024</td><td></td></tr>
+            <tr>
+                <td data-label="Foto"><img src="https://www.toyota.com.ar/content/dam/toyota/argentina/models/corolla-2025/gallery/01.jpg" alt="Corolla"></td>
+                <td data-label="Marca">Toyota</td>
+                <td data-label="Modelo">Corolla</td>
+                <td data-label="Versión">todas</td>
+                <td data-label="Estrellas"><span class="stars">★★★★★</span></td>
+                <td data-label="Año">2022</td>
+                <td data-label="Notas">7 airbags + ADAS</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.toyota.com.ar/content/dam/toyota/argentina/models/hilux-2025/gallery/hilux-gr-sport-iv.jpg" alt="Hilux"></td>
+                <td>Toyota</td>
+                <td>Hilux</td>
+                <td>doble cabina</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2019/2024</td>
+                <td>Fabricada en Zárate</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.toyota.com.ar/content/dam/toyota/argentina/models/corolla-cross-2025/gallery/01.jpg" alt="Corolla Cross"></td>
+                <td>Toyota</td>
+                <td>Corolla Cross</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2022</td>
+                <td>Híbrido disponible</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.vw.com.ar/content/dam/vw-argentina/models/taos/2025/taos-hero.jpg" alt="Taos"></td>
+                <td>Volkswagen</td>
+                <td>Taos</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2021</td>
+                <td>Fabricado en Pacheco</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.vw.com.ar/content/dam/vw-argentina/models/nivus/2025/nivus-hero.jpg" alt="Nivus"></td>
+                <td>Volkswagen</td>
+                <td>Nivus</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2021</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><img src="https://www.vw.com.ar/content/dam/vw-argentina/models/virtus/2025/virtus-gts.jpg" alt="Virtus"></td>
+                <td>Volkswagen</td>
+                <td>Virtus</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2022</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><img src="https://www.vw.com.ar/content/dam/vw-argentina/models/t-cross/2025/tcross-hero.jpg" alt="T-Cross"></td>
+                <td>Volkswagen</td>
+                <td>T-Cross</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2024</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><img src="https://www.chevrolet.com.ar/content/dam/chevrolet/argentina/es/models/tracker/gallery/tracker-2025-01.jpg" alt="Tracker"></td>
+                <td>Chevrolet</td>
+                <td>Tracker</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2022</td>
+                <td>Fabricada en Sta. Fe</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.nissan.com.ar/content/dam/nissan/ar/vehicles/kicks/2025/kicks-play.jpg" alt="Kicks"></td>
+                <td>Nissan</td>
+                <td>Kicks</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2025</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><img src="https://www.ford.com.ar/content/dam/Ford/website/ar/models/ranger/gallery/ranger-raptor-2025.jpg" alt="Ranger"></td>
+                <td>Ford</td>
+                <td>Ranger</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★★</span></td>
+                <td>2024</td>
+                <td>Fabricada en Pacheco</td>
+            </tr>
 
             <!-- 4 ESTRELLAS -->
-            <tr><td>Toyota</td><td>Yaris</td><td>todas</td><td><span class="stars">★★★★☆</span></td><td>2024</td><td>versión Brasil</td></tr>
-            <tr><td>Volkswagen</td><td>Jetta</td><td>facelift</td><td><span class="stars">★★★★☆</span></td><td>2025</td><td></td></tr>
-            <tr><td>Renault</td><td>Kardian</td><td>todas</td><td><span class="stars">★★★★☆</span></td><td>2024</td><td></td></tr>
+            <tr>
+                <td><img src="https://www.toyota.com.ar/content/dam/toyota/argentina/models/yaris/2025/yaris-sedan.jpg" alt="Yaris"></td>
+                <td>Toyota</td>
+                <td>Yaris</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★☆</span></td>
+                <td>2024</td>
+                <td>Versión Brasil</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.renault.com.ar/content/dam/renault/ar/automoviles/kardian/kardian-2025.jpg" alt="Kardian"></td>
+                <td>Renault</td>
+                <td>Kardian</td>
+                <td>todas</td>
+                <td><span class="stars">★★★★☆</span></td>
+                <td>2024</td>
+                <td></td>
+            </tr>
 
             <!-- 3 ESTRELLAS -->
-            <tr><td>Volkswagen</td><td>Amarok</td><td>todas</td><td><span class="stars">★★★☆☆</span></td><td>2025</td><td>fabricada en Gral. Pacheco</td></tr>
+            <tr>
+                <td><img src="https://www.vw.com.ar/content/dam/vw-argentina/models/amarok/2025/amarok-v6.jpg" alt="Amarok"></td>
+                <td>Volkswagen</td>
+                <td>Amarok</td>
+                <td>todas</td>
+                <td><span class="stars">★★★☆☆</span></td>
+                <td>2025</td>
+                <td>Fabricada en Gral. Pacheco</td>
+            </tr>
 
             <!-- 2 ESTRELLAS -->
-            <tr><td>Peugeot</td><td>208</td><td>fabricado en AR</td><td><span class="stars">★★☆☆☆</span></td><td>2022</td><td>2 airbags base</td></tr>
-            <tr><td>Peugeot</td><td>2008</td><td>todas</td><td><span class="stars">★☆☆☆☆</span></td><td>2025</td><td>1 estrella</td></tr>
+            <tr>
+                <td><img src="https://www.peugeot.com.ar/content/dam/peugeot/argentina/models/208/2025/208-gt.jpg" alt="208"></td>
+                <td>Peugeot</td>
+                <td>208</td>
+                <td>fabricado en AR</td>
+                <td><span class="stars">★★☆☆☆</span></td>
+                <td>2022</td>
+                <td>Solo 2 airbags en base</td>
+            </tr>
 
             <!-- 1 ESTRELLA -->
-            <tr><td>Chevrolet</td><td>Montana</td><td>todas</td><td><span class="stars">★☆☆☆☆</span></td><td>2024</td><td></td></tr>
+            <tr>
+                <td><img src="https://www.peugeot.com.ar/content/dam/peugeot/argentina/models/2008/2025/2008-active.jpg" alt="2008"></td>
+                <td>Peugeot</td>
+                <td>2008</td>
+                <td>todas</td>
+                <td><span class="stars">★☆☆☆☆</span></td>
+                <td>2025</td>
+                <td>1 estrella</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.chevrolet.com.ar/content/dam/chevrolet/argentina/es/models/montana/montana-2025.jpg" alt="Montana"></td>
+                <td>Chevrolet</td>
+                <td>Montana</td>
+                <td>todas</td>
+                <td><span class="stars">★☆☆☆☆</span></td>
+                <td>2024</td>
+                <td></td>
+            </tr>
 
             <!-- 0 ESTRELLAS -->
-            <tr><td>Fiat</td><td>Cronos / Argo</td><td>todas</td><td><span class="stars zero">☆☆☆☆☆</span></td><td>2021</td><td>0 estrellas</td></tr>
-            <tr><td>Fiat</td><td>Strada</td><td>cabina doble</td><td><span class="stars zero">☆☆☆☆☆</span></td><td>2023</td><td>0 estrellas</td></tr>
-            <tr><td>Renault</td><td>Sandero / Logan / Stepway</td><td>todas</td><td><span class="stars zero">☆☆☆☆☆</span></td><td>2024</td><td>0 estrellas</td></tr>
-            <tr><td>Citroën</td><td>Basalt</td><td>todas</td><td><span class="stars zero">☆☆☆☆☆</span></td><td>2025</td><td>nuevo 0 estrellas</td></tr>
+            <tr>
+                <tdOrb><img src="https://www.fiat.com.ar/content/dam/fiat/ar/models/cronos/2025/cronos-precision.jpg" alt="Cronos"></td>
+                <td>Fiat</td>
+                <td>Cronos / Argo</td>
+                <td>todas</td>
+                <td><span class="stars zero">☆☆☆☆☆</span></td>
+                <td>2021</td>
+                <td>0 estrellas</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.fiat.com.ar/content/dam/fiat/ar/models/strada/2025/strada-volcano.jpg" alt="Strada"></td>
+                <td>Fiat</td>
+                <td>Strada</td>
+                <td>cabina doble</td>
+                <td><span class="stars zero">☆☆☆☆☆</span></td>
+                <td>2023</td>
+                <td>0 estrellas</td>
+            </tr>
+            <tr>
+                <td><img src="https://www.renault.com.ar/content/dam/renault/ar/automoviles/sandero/stepway-2025.jpg" alt="Sandero"></td>
+                <td>Renault</td>
+                <td>Sandero / Logan / Stepway</td>
+                <td>todas</td>
+                <td><span class="stars zero">☆☆☆☆☆</span></td>
+                <td>2024</td>
+                <td>0 estrellas</td>
+            </tr>
         </tbody>
     </table>
 
     <script>
-        function renderStars(n) {
-            let full = '★'.repeat(n);
-            let empty = '☆'.repeat(5-n);
-            return n===0 ? '<span class="zero">'+full+empty+'</span>' : full+'☆'.repeat(5-n);
-        }
-        // ya está en HTML, pero si querés generar dinámicamente podés
-
         function filter() {
             let search = document.getElementById('search').value.toLowerCase();
             let stars = document.getElementById('filterStars').value;
             let rows = document.querySelectorAll('#tabla tbody tr');
             rows.forEach(row => {
                 let text = row.textContent.toLowerCase();
-                let rowStars = row.cells[3].textContent.trim().charAt(0);
-                let show = text.includes(search) && (stars==='' || rowStars==stars);
+                let rowStars = row.cells[4].textContent.trim().charAt(0);
+                let show = text.includes(search) && (stars === '' || rowStars == stars);
                 row.style.display = show ? '' : 'none';
             });
         }
