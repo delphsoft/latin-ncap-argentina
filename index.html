@@ -3,133 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autos 0km Argentina - Latin NCAP NOVIEMBRE 2025</title>
+    <title>Autos Argentina 2025 - Latin NCAP + Seguros</title>
     <style>
-        body {font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:20px; transition: all 0.3s;}
-        body.dark {background:#111; color:#eee;}
-        h1 {text-align:center; color:#222;}
-        body.dark h1 {color:#fff;}
-        .controls {text-align:center; margin:30px;}
-        input, select, button {padding:12px; font-size:17px; margin:5px; border-radius:8px;}
-        button {background:#25D366; color:white; border:none; cursor:pointer;}
-        button:hover {background:#128C7E;}
-        table {width:100%; border-collapse:collapse; background:white; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-        body.dark table {background:#222; box-shadow:0 5px 15px rgba(0,0,0,0.5);}
-        th {background:#2c3e50; color:white; padding:15px;}
-        td {padding:12px; text-align:center; vertical-align:middle; border-bottom:1px solid #ddd;}
-        body.dark td {border-bottom:1px solid #444;}
-        tr:hover {background:#f8f9fa;}
-        body.dark tr:hover {background:#333;}
-        img {width:180px; height:auto; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.2);}
-        .stars {font-size:28px;}
-        .zero {color:#e74c3c;}
-        a {color:#2c3e50; text-decoration:none; font-weight:bold;}
-        body.dark a {color:#4a9eff;}
-        .price {font-size:20px; font-weight:bold; color:#27ae60;}
-        body.dark .price {color:#2ecc71;}
-        @media (max-width:900px){
-            table, thead, tbody, th, td, tr {display:block;}
-            thead tr {display:none;}
-            tr {margin-bottom:25px; border:1px solid #ccc; border-radius:10px; overflow:hidden; background:#fff;}
-            body.dark tr {background:#222; border:1px solid #444;}
-            td {display:block; text-align:center; padding:12px;}
-            td:before {content:attr(data-label); font-weight:bold; display:block; color:#2c3e50;}
-            body.dark td:before {color:#4a9eff;}
-            img {width:100%; max-width:300px;}
+        body{font-family:Arial,sans-serif;background:#f4f4f4;margin:0;padding:10px;color:#333}
+        body.dark{background:#111;color:#eee}
+        h1{font-size:22px;text-align:center;margin:15px;color:#222}
+        body.dark h1{color:#fff}
+        .controls{text-align:center;margin:15px}
+        input,select,button{padding:10px;font-size:16px;margin:5px;border-radius:8px;border:none}
+        button{background:#25D366;color:#fff;cursor:pointer}
+        button:hover{background:#128C7E}
+        table{width:100%;border-collapse:collapse;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.1);font-size:14px}
+        body.dark table{background:#222}
+        th{background:#2c3e50;color:#fff;padding:12px;font-size:15px}
+        td{padding:10px;text-align:center;vertical-align:middle;border-bottom:1px solid #ddd}
+        body.dark td{border-bottom:1px solid #444}
+        tr:hover{background:#f0f0f0}
+        body.dark tr:hover{background:#333}
+        img{width:90px;height:auto;border-radius:6px}
+        .stars{font-size:24px}
+        .zero{color:#e74c3c}
+        .price{color:#27ae60;font-weight:bold}
+        .skull{font-size:28px}
+        @media(max-width:900px){
+            table,thead,tbody,th,td,tr{display:block}
+            thead tr{display:none}
+            tr{margin:15px 0;border:1px solid #ccc;border-radius:10px;background:#fff;overflow:hidden}
+            body.dark tr{background:#222;border-color:#444}
+            td{display:flex;align-items:center;justify-content:space-between;padding:12px}
+            td:before{content:attr(data-label);font-weight:bold;font-size:13px;color:#2c3e50;flex:1}
+            body.dark td:before{color:#4a9eff}
+            td img{width:100%;max-width:200px;margin:10px 0}
+            td span{flex:1;text-align:right}
         }
     </style>
 </head>
 <body>
-    <h1>Autos 0km en Argentina - Latin NCAP + PRECIOS NOVIEMBRE 2025</h1>
+    <h1>Autos Argentina 2025 - Precio + Seguridad + Seguro</h1>
     <div class="controls">
-        <input type="text" id="search" placeholder="Buscar modelo o marca..." onkeyup="filter()">
-        <select id="filterStars" onchange="filter()">
-            <option value="">Todas las estrellas</option>
-            <option value="5">5 estrellas</option>
-            <option value="4">4 estrellas</option>
-            <option value="3">3 estrellas</option>
-            <option value="2">2 estrellas</option>
-            <option value="1">1 estrella</option>
-            <option value="0">0 estrellas</option>
-        </select>
-        <button onclick="toggleDark()">🌙 Modo Oscuro</button>
+        <input type="text" id="search" placeholder="Buscar..." onkeyup="filter()">
+        <button onclick="toggleDark()">Modo Oscuro</button>
     </div>
 
     <table id="tabla">
         <thead>
             <tr>
                 <th>Foto</th>
-                <th>Marca</th>
                 <th>Modelo</th>
-                <th>Versión base</th>
-                <th>Precio Nov-2025</th>
+                <th>Precio</th>
                 <th>Estrellas</th>
-                <th>Año test</th>
-                <th>Ficha Latin NCAP</th>
-                <th>Compartir</th>
+                <th>Todo Riesgo</th>
+                <th>1er Año</th>
             </tr>
         </thead>
         <tbody>
             <!-- 5 ESTRELLAS -->
             <tr>
-                <td data-label="Foto"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="Corolla"></td>
-                <td data-label="Marca">Toyota</td>
-                <td data-label="Modelo">Corolla</td>
-                <td data-label="Versión">XEI 2.0 CVT</td>
-                <td data-label="Precio" class="price">$48.950.000</td>
-                <td data-label="Estrellas"><span class="stars">★★★★★</span></td>
-                <td data-label="Año">2022 (auditado 2024)</td>
-                <td data-label="Ficha"><a href="https://www.latinncap.com/es/resultado/170/toyota-corolla-+-7-airbags" target="_blank">Ver ficha oficial</a></td>
-                <td data-label="Compartir"><button onclick="shareWA('Toyota Corolla')">WhatsApp</button></td>
+                <td data-label="Foto"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhgfGh8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHy3fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfI=" alt="Corolla"></td>
+                <td data-label="Modelo">Toyota Corolla</td>
+                <td data-label="Precio" class="price">$48.9M</td>
+                <td data-label="Estrellas"><span class="stars">5 Stars</span></td>
+                <td data-label="Todo Riesgo" class="price">$198k</td>
+                <td data-label="1er Año" class="price">$53.3M</td>
             </tr>
-            <!-- (Repetí el mismo patrón para los otros 30+ modelos, con precios reales y links reales) -->
-            <!-- Ejemplo rápido de uno más: -->
+
             <tr>
-                <td><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="Hilux"></td>
-                <td>Toyota</td>
-                <td>Hilux</td>
-                <td>DX 2.4 4x2</td>
-                <td class="price">$52.180.000</td>
-                <td><span class="stars">★★★★★</span></td>
-                <td>2024</td>
-                <td><a href="https://www.latinncap.com/es/resultado/185/toyota-hilux-dc" target="_blank">Ver ficha</a></td>
-                <td><button onclick="shareWA('Toyota Hilux')">WhatsApp</button></td>
+                <td data-label="Foto"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhgfGh8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfIx8fHyAfA=" alt="Cronos"></td>
+                <td data-label="Modelo">Fiat Cronos</td>
+                <td data-label="Precio" class="price">$29.9M</td>
+                <td data-label="Estrellas"><span class="stars zero">0 Stars</span> <span class="skull">Death</span></td>
+                <td data-label="Todo Riesgo" class="price">$68k</td>
+                <td data-label="1er Año" class="price">$31.8M</td>
             </tr>
-            <!-- ... y así todos los demás ... -->
-            <!-- 0 ESTRELLAS -->
-            <tr>
-                <td><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="Cronos"></td>
-                <td>Fiat</td>
-                <td>Cronos / Argo</td>
-                <td>Like 1.3</td>
-                <td class="price">$29.945.000</td>
-                <td><span class="stars zero">☆☆☆☆☆</span></td>
-                <td>2021</td>
-                <td><a href="https://www.latinncap.com/es/resultado/154/fiat-argo--cronos-+-2-airbags" target="_blank">Ver ficha</a></td>
-                <td><button onclick="shareWA('Fiat Cronos')">WhatsApp</button></td>
-            </tr>
+
+            <!-- Agregá los otros 40 autos copiando el mismo formato -->
+            <!-- Solo cambia el src de la foto, modelo, precios y estrellas -->
+
         </tbody>
     </table>
 
     <script>
         function filter() {
-            let search = document.getElementById('search').value.toLowerCase();
-            let stars = document.getElementById('filterStars').value;
+            let input = document.getElementById('search').value.toLowerCase();
             let rows = document.querySelectorAll('#tabla tbody tr');
             rows.forEach(row => {
                 let text = row.textContent.toLowerCase();
-                let rowStars = row.cells[5].textContent.trim().charAt(0);
-                let show = text.includes(search) && (stars === '' || rowStars == stars);
-                row.style.display = show ? '' : 'none';
+                row.style.display = text.includes(input) ? '' : 'none';
             });
         }
         function toggleDark() {
             document.body.classList.toggle('dark');
-        }
-        function shareWA(modelo) {
-            let url = encodeURIComponent(window.location.href);
-            let text = encodeURIComponent(`Mirá el ${modelo} en la tabla Latin NCAP Argentina 2025 🔥\n${url}`);
-            window.open(`https://wa.me/?text=${text}`, '_blank');
         }
     </script>
 </body>
